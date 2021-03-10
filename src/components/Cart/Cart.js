@@ -3,7 +3,7 @@ import React from 'react';
 const Cart = (props) => {
     // console.log(props.cart);
     const cart = props.cart;
-    const total = cart.reduce( (total, prd) => total + prd.price,0);
+    const total = cart.reduce( (total, prd) => total + prd.price * prd.quantity,0);
 
     let shipping = 0;
     if(total > 0 && total < 25){
@@ -35,6 +35,9 @@ const Cart = (props) => {
             <p>Total before tax: ${formatNumber(totalBeforeTax)}</p>
             <p>Estimated Tax: ${formatNumber(tax)}</p>
             <h4>Order Total: ${formatNumber(grandTotal)}</h4>
+            {
+                props.children
+            }
         </div>
     );
 };
